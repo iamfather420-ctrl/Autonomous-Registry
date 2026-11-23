@@ -1,4 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
+import proofSource from "@/registry/proof/solvex-link.json?raw";
 import { ashRegistry } from "@/lib/registry/catalog";
 
 function json(body: unknown, status = 200) {
@@ -17,7 +18,9 @@ export const Route = createFileRoute("/r/registry.json")({
     handlers: {
       GET: async ({ request }) => {
         const origin = new URL(request.url).origin;
-        return json(ashRegistry(origin, false));
+        const document = ashRegistry(origin, false);
+        document.items.push(JSON.parse(proofSource));
+        return json(document);
       },
     },
   },
