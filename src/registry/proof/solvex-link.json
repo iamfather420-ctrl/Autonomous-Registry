@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "solvex-link",
+  "type": "registry:file",
+  "title": "Solvex link",
+  "description": "One integration proof entry. The autonomous registry builder writes it and full build reads the same document. It does not replace the Ash catalog.",
+  "files": [
+    {
+      "path": "src/registry/proof/solvex-link.json",
+      "type": "registry:file"
+    }
+  ],
+  "meta": {
+    "repository": "iamfather420-ctrl/Autonomous-Registry",
+    "interface": "github-contents",
+    "httpReadRoute": "/r/solvex-link.json",
+    "httpReadRouteStatus": "not-on-generated-ash-index"
+  }
+}
