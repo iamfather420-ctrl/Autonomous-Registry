@@ -1,0 +1,38 @@
+{
+  "url": "http://127.0.0.1:8080/",
+  "viewports": {
+    "desktop": {
+      "width": 1280,
+      "height": 800,
+      "status": 200,
+      "title": "Ash registry — Kiln",
+      "hasCanvas": false,
+      "bodyTextLen": 1772,
+      "bodyTextHash": "120aebd96491fce4ba3acf9f4b877535cf7f316a665963b6d5620fe8c8b58412",
+      "bodyTextPrefix": "Kiln Registry Foundry Shelf REGISTRY · ALREADY FIRED Ash is a re",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/app-builder-preview.png"
+    },
+    "mobile": {
+      "width": 390,
+      "height": 844,
+      "status": 200,
+      "title": "Ash registry — Kiln",
+      "hasCanvas": false,
+      "bodyTextLen": 1772,
+      "bodyTextHash": "120aebd96491fce4ba3acf9f4b877535cf7f316a665963b6d5620fe8c8b58412",
+      "bodyTextPrefix": "Kiln Registry Foundry Shelf REGISTRY · ALREADY FIRED Ash is a re",
+      "horizontalOverflow": true,
+      "consoleErrors": [
+        "You provided a `value` prop to a form field without an `onChange` handler. This will render a read-only field. If the field should be mutable use `defaultValue`. Otherwise, set either `onChange` or `readOnly`."
+      ],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/app-builder-preview-mobile.png"
+    }
+  },
+  "brandWarnings": [],
+  "authWarnings": [],
+  "verdictFile": "/workspace/screenshots/app-builder-preview.json"
+}
