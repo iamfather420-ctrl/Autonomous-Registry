@@ -1,8 +1,8 @@
 import { C as require_jsx_runtime, x as Link } from "./_libs/@tanstack/react-router+[...].mjs";
-import { c as shellQuiet, n as Route } from "./_ssr/router-BLcraCQN.mjs";
-import { t as ForgeReport } from "./_ssr/result-DS8xKg9S.mjs";
+import { c as shellQuiet, n as Route } from "./_ssr/router-BamLOpiv.mjs";
+import { t as ForgeReport } from "./_ssr/result-BLf7bKTK.mjs";
 import { n as useShelfHydrated, t as useShelf } from "./_ssr/store-wgANnM7L.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/_id-CRb2saVW.js
+//#region node_modules/.nitro/vite/services/ssr/assets/_id-CwtN3JEd.js
 var import_jsx_runtime = require_jsx_runtime();
 function ShelfDetail() {
 	const { id } = Route.useParams();

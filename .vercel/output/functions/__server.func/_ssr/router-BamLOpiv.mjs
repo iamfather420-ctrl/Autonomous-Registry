@@ -360,7 +360,7 @@ function ashItem(name) {
 }
 var ASH_CATEGORIES = ["all", ...new Set(ASH.map((entry) => entry.category))];
 //#endregion
-//#region node_modules/.nitro/vite/services/ssr/assets/router-BLcraCQN.js
+//#region node_modules/.nitro/vite/services/ssr/assets/router-BamLOpiv.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
 var __defProp = Object.defineProperty;
@@ -863,18 +863,18 @@ var Route$7 = createRootRoute({
 		})]
 	})
 });
-var $$splitComponentImporter$4 = () => import("./routes-RZu_7Rtl.mjs");
+var $$splitComponentImporter$4 = () => import("./routes-BGdX16NF.mjs");
 var Route$6 = createFileRoute("/")({
 	head: () => ({ meta: [{ title: "Ash registry — Kiln" }] }),
 	component: lazyRouteComponent($$splitComponentImporter$4, "component")
 });
-var $$splitComponentImporter$3 = () => import("./forge-B0yYahsR.mjs");
+var $$splitComponentImporter$3 = () => import("./forge-huT2JH_I.mjs");
 var Route$5 = createFileRoute("/forge")({
 	head: () => ({ meta: [{ title: "Foundry — Kiln" }] }),
 	component: lazyRouteComponent($$splitComponentImporter$3, "component")
 });
-var $$splitComponentImporter$2 = () => import("../_name-CBdBMh1U.mjs");
-var $$splitNotFoundComponentImporter = () => import("../_name-B-gibK7y.mjs");
+var $$splitComponentImporter$2 = () => import("../_name-CgWLaUTP.mjs");
+var $$splitNotFoundComponentImporter = () => import("../_name-BpoMSTuC.mjs");
 var Route$4 = createFileRoute("/items/$name")({
 	loader: ({ params }) => {
 		const item = ashItem(params.name);
@@ -893,6 +893,7 @@ var Route$4 = createFileRoute("/items/$name")({
 	notFoundComponent: lazyRouteComponent($$splitNotFoundComponentImporter, "notFoundComponent"),
 	component: lazyRouteComponent($$splitComponentImporter$2, "component")
 });
+var solvex_link_default = "{\n  \"$schema\": \"https://ui.shadcn.com/schema/registry-item.json\",\n  \"name\": \"solvex-link\",\n  \"type\": \"registry:file\",\n  \"title\": \"Solvex link\",\n  \"description\": \"One integration proof entry. The autonomous registry builder writes it and full build reads the same document. It does not replace the Ash catalog or the 120 formal cases.\",\n  \"files\": [\n    {\n      \"path\": \"src/registry/proof/solvex-link.json\",\n      \"type\": \"registry:file\"\n    }\n  ],\n  \"meta\": {\n    \"repository\": \"iamfather420-ctrl/Autonomous-Registry\",\n    \"interface\": \"github-contents\",\n    \"correlationId\": \"2a45414e-c9eb-4a71-bc74-8c06a71696aa\",\n    \"submittedAt\": \"2026-11-23T15:50:51.678Z\",\n    \"submittedBy\": \"autonomous-registry-builder\",\n    \"readBy\": \"full-build\",\n    \"httpReadRoute\": \"/r/solvex-link.json\",\n    \"httpReadRouteStatus\": \"not-on-generated-ash-index\"\n  }\n}\n";
 function json$1(body, status = 200) {
 	return new Response(JSON.stringify(body, null, 2), {
 		status,
@@ -905,7 +906,9 @@ function json$1(body, status = 200) {
 }
 var Route$3 = createFileRoute("/r/registry.json")({ server: { handlers: { GET: async ({ request }) => {
 	const origin = new URL(request.url).origin;
-	return json$1(ashRegistry(origin, false));
+	const document = ashRegistry(origin, false);
+	document.items.push(JSON.parse(solvex_link_default));
+	return json$1(document);
 } } } });
 function json(body, status = 200) {
 	return new Response(JSON.stringify(body, null, 2), {
@@ -919,18 +922,19 @@ function json(body, status = 200) {
 }
 var Route$2 = createFileRoute("/r/{$name}.json")({ server: { handlers: { GET: async ({ request, params }) => {
 	const name = params.name;
+	if (name === "solvex-link") return json(JSON.parse(solvex_link_default));
 	if (!ashItem(name)) return json({ error: "Not in the Ash registry." }, 404);
 	const origin = new URL(request.url).origin;
 	const item = ashRegistry(origin, true).items.find((entry) => entry.name === name);
 	if (!item) return json({ error: "Not in the Ash registry." }, 404);
 	return json(item);
 } } } });
-var $$splitComponentImporter$1 = () => import("./shelf-B4mjBgPe.mjs");
+var $$splitComponentImporter$1 = () => import("./shelf-Z_JlMo5t.mjs");
 var Route$1 = createFileRoute("/shelf/")({
 	head: () => ({ meta: [{ title: "Shelf — Kiln" }] }),
 	component: lazyRouteComponent($$splitComponentImporter$1, "component")
 });
-var $$splitComponentImporter = () => import("../_id-CRb2saVW.mjs");
+var $$splitComponentImporter = () => import("../_id-CwtN3JEd.mjs");
 var Route = createFileRoute("/shelf/$id")({
 	head: () => ({ meta: [{ title: "Sealed registry — Kiln" }] }),
 	component: lazyRouteComponent($$splitComponentImporter, "component")

@@ -1,7 +1,7 @@
 import { C as require_jsx_runtime, x as Link } from "../_libs/@tanstack/react-router+[...].mjs";
-import { c as shellQuiet } from "./router-BLcraCQN.mjs";
+import { c as shellQuiet } from "./router-BamLOpiv.mjs";
 import { n as useShelfHydrated, t as useShelf } from "./store-wgANnM7L.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/shelf-B4mjBgPe.js
+//#region node_modules/.nitro/vite/services/ssr/assets/shelf-Z_JlMo5t.js
 var import_jsx_runtime = require_jsx_runtime();
 function ShelfPage() {
 	const ready = useShelfHydrated();

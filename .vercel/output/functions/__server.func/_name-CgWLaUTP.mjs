@@ -1,8 +1,8 @@
 import { i as __toESM } from "./_runtime.mjs";
 import { C as require_jsx_runtime, Z as require_react, x as Link } from "./_libs/@tanstack/react-router+[...].mjs";
-import { i as CopyButton, r as Route$4 } from "./_ssr/router-BLcraCQN.mjs";
+import { i as CopyButton, r as Route$4 } from "./_ssr/router-BamLOpiv.mjs";
 import { n as AshPreview } from "./_ssr/previews-CgWxgpNd.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/_name-CBdBMh1U.js
+//#region node_modules/.nitro/vite/services/ssr/assets/_name-CgWLaUTP.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
 function ItemPage() {

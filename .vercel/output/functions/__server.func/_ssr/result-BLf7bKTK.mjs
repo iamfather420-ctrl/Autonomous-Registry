@@ -1,7 +1,7 @@
 import { i as __toESM } from "../_runtime.mjs";
 import { C as require_jsx_runtime, Z as require_react } from "../_libs/@tanstack/react-router+[...].mjs";
-import { a as downloadJson, i as CopyButton, s as shellPrimary } from "./router-BLcraCQN.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/result-DS8xKg9S.js
+import { a as downloadJson, i as CopyButton, s as shellPrimary } from "./router-BamLOpiv.mjs";
+//#region node_modules/.nitro/vite/services/ssr/assets/result-BLf7bKTK.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
 function ForgeReport({ registry, steps, sealedBy, seal, summary, note, sourceLabel, sourceUrl }) {
