@@ -3,7 +3,7 @@
   "name": "solvex-link",
   "type": "registry:file",
   "title": "Solvex link",
-  "description": "One integration proof entry. The autonomous registry builder writes it and full build reads the same document. It does not replace the Ash catalog.",
+  "description": "One integration proof entry. The autonomous registry builder writes it and full build reads the same document. It does not replace the Ash catalog or the 120 formal cases.",
   "files": [
     {
       "path": "src/registry/proof/solvex-link.json",
@@ -13,6 +13,10 @@
   "meta": {
     "repository": "iamfather420-ctrl/Autonomous-Registry",
     "interface": "github-contents",
+    "correlationId": "2a45414e-c9eb-4a71-bc74-8c06a71696aa",
+    "submittedAt": "2026-11-23T15:50:51.678Z",
+    "submittedBy": "autonomous-registry-builder",
+    "readBy": "full-build",
     "httpReadRoute": "/r/solvex-link.json",
     "httpReadRouteStatus": "not-on-generated-ash-index"
   }
