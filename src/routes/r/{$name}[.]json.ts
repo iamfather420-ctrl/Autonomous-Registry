@@ -1,4 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
+import proofSource from "@/registry/proof/solvex-link.json?raw";
 import { ashItem, ashRegistry } from "@/lib/registry/catalog";
 
 function json(body: unknown, status = 200) {
@@ -17,6 +18,7 @@ export const Route = createFileRoute("/r/{$name}.json")({
     handlers: {
       GET: async ({ request, params }) => {
         const name = params.name;
+        if (name === "solvex-link") return json(JSON.parse(proofSource));
         if (!ashItem(name)) return json({ error: "Not in the Ash registry." }, 404);
         const origin = new URL(request.url).origin;
         const item = ashRegistry(origin, true).items.find((entry) => entry.name === name);
