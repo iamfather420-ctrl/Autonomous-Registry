@@ -6,6 +6,7 @@ The Registry accepts explicit G.O.A.T. assessment submissions at
 
 ## Required server configuration
 
+- `GROK_GATE_ORIGIN`: the exact HTTPS origin of the trusted gate issuer when the incoming request host is not one of the recognized `grok.me` / `app-builder-testing.com` domains. The Registry uses this origin to resolve the JWKS endpoint.
 - `SOLVEX_REGISTRY_INGEST_AUDIENCES`: comma-separated exact audience values
   accepted for gate-issued identity JWTs. Configure the audience used by the
   authenticated G.O.A.T. application. The API fails closed when this is empty.
