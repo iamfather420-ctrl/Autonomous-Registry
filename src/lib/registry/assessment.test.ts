@@ -1,6 +1,6 @@
 import { describe, it } from "node:test";
 import assert from "node:assert/strict";
-import { assessmentDigest, validateAssessment } from "./assessment.ts";
+import { assessmentDigest, validateAssessment, verifyAssessmentDigest } from "./assessment.ts";
 
 const report = {
   id: "scan_12345678",
@@ -40,5 +40,15 @@ describe("validateAssessment", () => {
 
   it("uses canonical key ordering for the digest", () => {
     assert.equal(assessmentDigest({ a: 1, b: { c: 2, d: 3 } }), assessmentDigest({ b: { d: 3, c: 2 }, a: 1 }));
+  });
+});
+
+describe("assessment evidence digest", () => {
+  it("detects changed stored evidence instead of recomputing over the stored digest", () => {
+    const value = { source: "git-goat", assessmentId: report.id, report };
+    const digest = assessmentDigest(value);
+    assert.equal(verifyAssessmentDigest(value, digest), true);
+    assert.equal(verifyAssessmentDigest({ ...value, report: { ...report, commit: "b".repeat(40) } }, digest), false);
+    assert.equal(verifyAssessmentDigest(value, "not-a-sha256"), false);
   });
 });
