@@ -3,6 +3,17 @@ import { resolveAssessmentActor } from "@/lib/registry/assessment-auth.server";
 import { recordAssessment } from "@/lib/registry/assessment-store.server";
 import { validateAssessment } from "@/lib/registry/assessment";
 
+async function readBoundedText(request: Request, maxBytes: number): Promise<string | null> {
+  if (!request.body) return null;
+  const reader = request.body.getReader(); const chunks: Uint8Array[] = []; let total = 0;
+  try { while (true) { const { done, value } = await reader.read(); if (done) break; total += value.byteLength; if (total > maxBytes) { await reader.cancel(); return null; } chunks.push(value); } }
+  finally { reader.releaseLock(); }
+  const bytes = new Uint8Array(total); let offset = 0;
+  for (const chunk of chunks) { bytes.set(chunk, offset); offset += chunk.byteLength; }
+  try { return new TextDecoder('utf-8', { fatal: true }).decode(bytes); }
+  catch { throw new Error('Request body must be valid UTF-8 JSON.'); }
+}
+
 function json(body: unknown, status = 200) {
   return new Response(JSON.stringify(body), {
     status,
@@ -20,11 +31,11 @@ export const Route = createFileRoute("/api/v1/assessments")({
         if (length > 1_600_000) return json({ error: "Assessment request is too large." }, 413);
         let body: unknown;
         try {
-          const text = await request.text();
-          if (new TextEncoder().encode(text).byteLength > 1_600_000) return json({ error: "Assessment request is too large." }, 413);
+          const text = await readBoundedText(request, 1_600_000);
+          if (text === null) return json({ error: "Assessment request is too large or empty." }, 413);
           body = JSON.parse(text);
-        } catch {
-          return json({ error: "Request body must be valid JSON." }, 400);
+        } catch (error) {
+          return json({ error: error instanceof Error ? error.message : "Request body must be valid JSON." }, 400);
         }
         let assessment;
         try { assessment = validateAssessment(body); }
