@@ -16,7 +16,19 @@ import { Route as RRegistryDotjsonRouteImport } from './routes/r/registry[.]json
 import { Route as RChar123nameChar125DotjsonRouteImport } from './routes/r/{$name}[.]json'
 import { Route as ShelfIndexRouteImport } from './routes/shelf/index'
 import { Route as ShelfIdRouteImport } from './routes/shelf/$id'
+import { Route as ApiV1AssessmentsRouteImport } from './routes/api/v1/assessments'
+import { Route as ApiV1AssessmentsAssessmentIdRouteImport } from './routes/api/v1/assessments.$assessmentId'
 
+const ApiV1AssessmentsRoute = ApiV1AssessmentsRouteImport.update({
+  id: '/api/v1/assessments',
+  path: '/api/v1/assessments',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiV1AssessmentsAssessmentIdRoute = ApiV1AssessmentsAssessmentIdRouteImport.update({
+  id: '/api/v1/assessments/$assessmentId',
+  path: '/api/v1/assessments/$assessmentId',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -55,6 +67,8 @@ const ShelfIdRoute = ShelfIdRouteImport.update({
 } as any)
 
 export interface FileRoutesByFullPath {
+  '/api/v1/assessments': typeof ApiV1AssessmentsRoute
+  '/api/v1/assessments/$assessmentId': typeof ApiV1AssessmentsAssessmentIdRoute
   '/': typeof IndexRoute
   '/forge': typeof ForgeRoute
   '/items/$name': typeof ItemsNameRoute
@@ -64,6 +78,8 @@ export interface FileRoutesByFullPath {
   '/shelf/': typeof ShelfIndexRoute
 }
 export interface FileRoutesByTo {
+  '/api/v1/assessments': typeof ApiV1AssessmentsRoute
+  '/api/v1/assessments/$assessmentId': typeof ApiV1AssessmentsAssessmentIdRoute
   '/': typeof IndexRoute
   '/forge': typeof ForgeRoute
   '/items/$name': typeof ItemsNameRoute
@@ -73,6 +89,8 @@ export interface FileRoutesByTo {
   '/shelf': typeof ShelfIndexRoute
 }
 export interface FileRoutesById {
+  '/api/v1/assessments': typeof ApiV1AssessmentsRoute
+  '/api/v1/assessments/$assessmentId': typeof ApiV1AssessmentsAssessmentIdRoute
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/forge': typeof ForgeRoute
@@ -85,6 +103,8 @@ export interface FileRoutesById {
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
+    | '/api/v1/assessments'
+    | '/api/v1/assessments/$assessmentId'
     | '/'
     | '/forge'
     | '/items/$name'
@@ -94,6 +114,8 @@ export interface FileRouteTypes {
     | '/shelf/'
   fileRoutesByTo: FileRoutesByTo
   to:
+    | '/api/v1/assessments'
+    | '/api/v1/assessments/$assessmentId'
     | '/'
     | '/forge'
     | '/items/$name'
@@ -102,6 +124,8 @@ export interface FileRouteTypes {
     | '/shelf/$id'
     | '/shelf'
   id:
+    | '/api/v1/assessments'
+    | '/api/v1/assessments/$assessmentId'
     | '__root__'
     | '/'
     | '/forge'
@@ -113,6 +137,8 @@ export interface FileRouteTypes {
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
+  ApiV1AssessmentsRoute: typeof ApiV1AssessmentsRoute
+  ApiV1AssessmentsAssessmentIdRoute: typeof ApiV1AssessmentsAssessmentIdRoute
   IndexRoute: typeof IndexRoute
   ForgeRoute: typeof ForgeRoute
   ItemsNameRoute: typeof ItemsNameRoute
@@ -124,6 +150,20 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/api/v1/assessments': {
+      id: '/api/v1/assessments'
+      path: '/api/v1/assessments'
+      fullPath: '/api/v1/assessments'
+      preLoaderRoute: typeof ApiV1AssessmentsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/v1/assessments/$assessmentId': {
+      id: '/api/v1/assessments/$assessmentId'
+      path: '/api/v1/assessments/$assessmentId'
+      fullPath: '/api/v1/assessments/$assessmentId'
+      preLoaderRoute: typeof ApiV1AssessmentsAssessmentIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -177,6 +217,8 @@ declare module '@tanstack/react-router' {
 }
 
 const rootRouteChildren: RootRouteChildren = {
+  ApiV1AssessmentsRoute: ApiV1AssessmentsRoute,
+  ApiV1AssessmentsAssessmentIdRoute: ApiV1AssessmentsAssessmentIdRoute,
   IndexRoute: IndexRoute,
   ForgeRoute: ForgeRoute,
   ItemsNameRoute: ItemsNameRoute,
