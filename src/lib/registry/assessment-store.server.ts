@@ -1,6 +1,6 @@
 import { randomUUID } from "node:crypto";
 import { getSql } from "../db.ts";
-import { assessmentDigest, type ValidatedAssessment } from "./assessment.ts";
+import { assessmentDigest, verifyAssessmentDigest, type ValidatedAssessment } from "./assessment.ts";
 
 export type StoredAssessment = {
   id: string;
@@ -95,18 +95,13 @@ export async function readAssessment(tenantId: string, assessmentId: string): Pr
   );
   if (!rows[0]) return null;
   const record = fromRow(rows[0], tenantId);
-  const digest = assessmentDigest({
-    source: record.source,
-    assessmentId: record.assessmentId,
-    report: record.report,
-  });
-  return { ...record, digest };
+  return record;
 }
 
 export function verifyStoredAssessment(record: StoredAssessment): boolean {
-  return assessmentDigest({
+  return verifyAssessmentDigest({
     source: record.source,
     assessmentId: record.assessmentId,
     report: record.report,
-  }) === record.digest;
+  }, record.digest);
 }
